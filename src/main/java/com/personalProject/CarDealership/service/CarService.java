@@ -36,7 +36,6 @@ public class CarService {
         }
     }
 
-
     public List<CarModel> getAllCars() {
         return carRepo.findAll();
     }

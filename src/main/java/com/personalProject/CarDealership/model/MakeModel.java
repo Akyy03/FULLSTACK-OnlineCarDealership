@@ -1,5 +1,6 @@
 package com.personalProject.CarDealership.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class MakeModel {
     private String make;
     private String model;
     @OneToMany(mappedBy = "carMake", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<CarModel> cars;
 
     public MakeModel(String make, String model) {

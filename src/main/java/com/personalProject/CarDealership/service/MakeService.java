@@ -5,6 +5,8 @@ import com.personalProject.CarDealership.repository.MakeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MakeService {
 
@@ -25,4 +27,7 @@ public class MakeService {
         }
     }
 
+    public List<MakeModel> getAllMakes() {
+        return makeRepo.findAll();
+    }
 }

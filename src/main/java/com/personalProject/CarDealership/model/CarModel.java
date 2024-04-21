@@ -1,5 +1,6 @@
 package com.personalProject.CarDealership.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.sql.Date;
@@ -23,6 +24,7 @@ public class CarModel {
 
     @ManyToOne
     @JoinColumn(name = "make_Id", nullable = false)
+    @JsonBackReference
     private MakeModel carMake;
 
     public CarModel() {
