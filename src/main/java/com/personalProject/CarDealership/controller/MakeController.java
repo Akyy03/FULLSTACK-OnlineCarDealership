@@ -25,4 +25,20 @@ public class MakeController {
     public List<MakeModel> getAllMakes() {
         return makeService.getAllMakes();
     }
+
+    @GetMapping("/findById/{id}")
+    public MakeModel findMakeById(@PathVariable Long id) {
+        return makeService.findMakeById(id);
+    }
+
+    @GetMapping("/findByMakeName/{make}")
+    public List<MakeModel> findByMakeName(@PathVariable String make) {
+        return makeService.findByMakeName(make);
+    }
+
+    @GetMapping("/findByModel/{model}")
+    public List<MakeModel> findByModel(@PathVariable String model) {
+        return makeService.findByModel(model);
+    }
+
 }

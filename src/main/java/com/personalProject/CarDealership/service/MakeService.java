@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MakeService {
@@ -29,5 +30,17 @@ public class MakeService {
 
     public List<MakeModel> getAllMakes() {
         return makeRepo.findAll();
+    }
+
+    public MakeModel findMakeById(Long id) {
+        return makeRepo.findById(id).orElse(null);
+    }
+
+    public List<MakeModel> findByMakeName(String make) {
+        return makeRepo.findAll().stream().filter(makeModel -> makeModel.getMake().equalsIgnoreCase(make)).collect(Collectors.toList());
+    }
+
+    public List<MakeModel> findByModel(String model) {
+        return makeRepo.findAll().stream().filter(makeModel -> makeModel.getModel().equalsIgnoreCase(model)).collect(Collectors.toList());
     }
 }
