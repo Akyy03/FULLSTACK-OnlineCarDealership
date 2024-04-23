@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,9 +22,6 @@ public class CarService {
     }
 
     private void validateCar(CarModel carModel) {
-        if (carModel == null) {
-            throw new IllegalArgumentException("Car model cannot be null.");
-        }
         if (carModel.getPrice() <= 0) {
             throw new IllegalArgumentException("Car's price must be greater than 0.");
         }
@@ -84,6 +82,44 @@ public class CarService {
             int year = cal.get(Calendar.YEAR);
             return year >= minYear && year <= maxYear;
         }).collect(Collectors.toList());
+    }
+
+    public void updateCar(long carId, CarModel updatedCar) {
+        Optional<CarModel> optionalCar = carRepo.findById(carId);
+        if (optionalCar.isPresent()) {
+            CarModel car = optionalCar.get();
+            if (updatedCar.getPrice() != 0) {
+                car.setPrice(updatedCar.getPrice());
+            }
+            if (updatedCar.getColor() != null) {
+                car.setColor(updatedCar.getColor());
+            }
+            if (updatedCar.getDateOfFabrication() != null) {
+                car.setDateOfFabrication(updatedCar.getDateOfFabrication());
+            }
+            if (updatedCar.getKm() != 0) {
+                car.setKm(updatedCar.getKm());
+            }
+            if (updatedCar.getHp() != 0) {
+                car.setHp(updatedCar.getHp());
+            }
+            if (updatedCar.getDrivetrain() != null) {
+                car.setDrivetrain(updatedCar.getDrivetrain());
+            }
+            if (updatedCar.getTransmission() != null) {
+                car.setTransmission(updatedCar.getTransmission());
+            }
+            if (updatedCar.getFuelType() != null) {
+                car.setFuelType(updatedCar.getFuelType());
+            }
+            carRepo.save(car);
+        } else {
+            throw new IllegalArgumentException("Car with ID " + carId + " not found.");
+        }
+    }
+
+    public void removeCar(Long carId) {
+        carRepo.deleteById(carId);
     }
 
 }

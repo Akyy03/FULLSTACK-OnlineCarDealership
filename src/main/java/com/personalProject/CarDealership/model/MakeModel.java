@@ -15,7 +15,7 @@ public class MakeModel {
     private long makeId;
     private String make;
     private String model;
-    @OneToMany(mappedBy = "carMake", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "carMake", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<CarModel> cars;
 

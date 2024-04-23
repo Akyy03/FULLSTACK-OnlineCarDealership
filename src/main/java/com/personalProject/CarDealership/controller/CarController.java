@@ -79,4 +79,16 @@ public class CarController {
         return ResponseEntity.ok(filteredCars);
     }
 
+    @PutMapping("/update/{carId}")
+    public ResponseEntity<String> updateCar(@PathVariable long carId, @RequestBody CarModel updatedCar) {
+        carService.updateCar(carId, updatedCar);
+        return ResponseEntity.ok("Car updated successfully!");
+    }
+
+    @DeleteMapping("/remove/{carId}")
+    public ResponseEntity<String> removeCar(@PathVariable(name = "carId") Long carId) {
+        carService.removeCar(carId);
+        return ResponseEntity.ok("Car removed successfully");
+    }
+
 }
