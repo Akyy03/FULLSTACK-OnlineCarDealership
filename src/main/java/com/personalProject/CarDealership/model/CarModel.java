@@ -20,7 +20,6 @@ public class CarModel {
     private String drivetrain;
     private String transmission;
     private String fuelType;
-    private boolean isAvailable;
 
     @ManyToOne
     @JoinColumn(name = "make_Id", nullable = false)
@@ -100,14 +99,6 @@ public class CarModel {
 
     public void setFuelType(String fuelType) {
         this.fuelType = fuelType;
-    }
-
-    public boolean isAvailable() {
-        return isAvailable;
-    }
-
-    public void setAvailable(boolean available) {
-        isAvailable = available;
     }
 
     public MakeModel getCarMake() {

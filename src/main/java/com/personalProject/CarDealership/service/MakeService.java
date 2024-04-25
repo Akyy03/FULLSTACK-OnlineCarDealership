@@ -38,11 +38,11 @@ public class MakeService {
     }
 
     public List<MakeModel> findByMakeName(String make) {
-        return makeRepo.findAll().stream().filter(makeModel -> makeModel.getMake().equalsIgnoreCase(make)).collect(Collectors.toList());
+        return makeRepo.findAll().stream().filter(makeModel -> makeModel.getMake().toLowerCase().contains(make.toLowerCase())).collect(Collectors.toList());
     }
 
     public List<MakeModel> findByModel(String model) {
-        return makeRepo.findAll().stream().filter(makeModel -> makeModel.getModel().equalsIgnoreCase(model)).collect(Collectors.toList());
+        return makeRepo.findAll().stream().filter(makeModel -> makeModel.getModel().toLowerCase().contains(model.toLowerCase())).collect(Collectors.toList());
     }
 
     public void updateMake(long makeId, MakeModel updatedMake) {

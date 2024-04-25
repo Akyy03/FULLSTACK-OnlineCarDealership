@@ -45,19 +45,19 @@ public class CarService {
     }
 
     public List<CarModel> findCarByColor(String color) {
-        return carRepo.findAll().stream().filter(carModel -> carModel.getColor().equalsIgnoreCase(color)).collect(Collectors.toList());
+        return carRepo.findAll().stream().filter(carModel -> carModel.getColor().toLowerCase().contains(color.toLowerCase())).collect(Collectors.toList());
     }
 
     public List<CarModel> findCarByDrivetrain(String drivetrain) {
-        return carRepo.findAll().stream().filter(carModel -> carModel.getDrivetrain().equalsIgnoreCase(drivetrain)).collect(Collectors.toList());
+        return carRepo.findAll().stream().filter(carModel -> carModel.getDrivetrain().toLowerCase().contains(drivetrain.toLowerCase())).collect(Collectors.toList());
     }
 
     public List<CarModel> findCarByFuelType(String fuelType) {
-        return carRepo.findAll().stream().filter(carModel -> carModel.getFuelType().equalsIgnoreCase(fuelType)).collect(Collectors.toList());
+        return carRepo.findAll().stream().filter(carModel -> carModel.getFuelType().toLowerCase().contains(fuelType.toLowerCase())).collect(Collectors.toList());
     }
 
     public List<CarModel> findCarByTransmission(String transmission) {
-        return carRepo.findAll().stream().filter(carModel -> carModel.getTransmission().equalsIgnoreCase(transmission)).collect(Collectors.toList());
+        return carRepo.findAll().stream().filter(carModel -> carModel.getTransmission().toLowerCase().contains(transmission.toLowerCase())).collect(Collectors.toList());
     }
 
     public List<CarModel> findCarByHp(int minHp, int maxHp) {
