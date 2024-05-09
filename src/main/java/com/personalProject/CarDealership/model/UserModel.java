@@ -1,8 +1,11 @@
 package com.personalProject.CarDealership.model;
 
+import com.personalProject.CarDealership.enums.UserRole;
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Data
 @Table(name = "users")
 public class UserModel {
     @Id
@@ -17,6 +20,8 @@ public class UserModel {
 
     @Column(nullable = false)
     private String password;
+
+    private UserRole userRole;
 
     public UserModel() {
     }
