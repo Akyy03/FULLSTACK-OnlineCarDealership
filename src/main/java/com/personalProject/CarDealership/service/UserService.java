@@ -2,7 +2,11 @@ package com.personalProject.CarDealership.service;
 
 import com.personalProject.CarDealership.model.UserModel;
 import com.personalProject.CarDealership.repository.UserRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +14,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class UserService {
+@RequiredArgsConstructor
+public class UserService implements com.personalProject.CarDealership.service.jwt.UserService {
 
     @Autowired
     private UserRepo userRepo;
@@ -42,4 +47,13 @@ public class UserService {
         userRepo.deleteById(userId);
     }
 
+    @Override
+    public UserDetailsService userDetailsService() {
+        return new UserDetailsService() {
+            @Override
+            public UserDetails loadUserByUsername(String username) {
+                return userRepo.findFirstByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+            }
+        };
+    }
 }
