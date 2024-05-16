@@ -1,1 +1,24 @@
-<p>admin-dashboard works!</p>
+<div class="tabs">
+  <button class="tab" (click)="activeTab = 'makes'">Makes Manager</button>
+  <button class="tab" (click)="activeTab = 'cars'">Cars Manager</button>
+</div>
+
+<div *ngIf="activeTab === 'makes'">
+  <h2>Makes Manager</h2>
+  <div class="form">
+    <button nz-button nzType="primary">Add</button>
+    <button nz-button nzType="primary">Update</button>
+    <button nz-button nzType="primary">Delete</button>
+    <button nz-button nzType="primary">Show All</button>
+  </div>
+</div>
+
+<div *ngIf="activeTab === 'cars'">
+  <h2>Cars Manager</h2>
+  <div class="form">
+    <button nz-button nzType="primary">Add</button>
+    <button nz-button nzType="primary">Update</button>
+    <button nz-button nzType="primary">Delete</button>
+    <button nz-button nzType="primary">Show All</button>
+  </div>
+</div>

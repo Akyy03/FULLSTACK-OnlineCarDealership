@@ -16,7 +16,6 @@ public class MakeService {
     private MakeRepo makeRepo;
 
     public void addMake(MakeModel makeModel) {
-        validateMake(makeModel);
         makeRepo.save(makeModel);
     }
 

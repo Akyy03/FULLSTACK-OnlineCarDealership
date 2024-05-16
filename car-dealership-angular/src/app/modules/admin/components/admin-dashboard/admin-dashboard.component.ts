@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-dashboard.component.scss']
 })
 export class AdminDashboardComponent implements OnInit {
+  activeTab: 'makes' | 'cars' = 'makes';
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
